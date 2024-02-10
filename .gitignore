@@ -1,0 +1,10 @@
+ethproxy
+resources/config/*.json
+.vscode
+build/
+gl-code-quality-report.json
+sonarqube_report.xml
+coverage.out
+report.xml
+.docker_hub_token
+records/

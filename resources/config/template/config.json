@@ -1,0 +1,16 @@
+{
+    "recorder": {
+        "buffSize": 32768,
+        "path": "/home/records",
+        "Provider": {
+            "url": "",
+            "login": "",
+            "password": ""
+        }
+    },
+    "api": {
+        "port": 9090,
+        "secretKey": "XXXX"
+    },
+    "debugMode": true
+}
