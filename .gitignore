@@ -1,4 +1,3 @@
-ethproxy
 resources/config/*.json
 .vscode
 build/
@@ -8,3 +7,4 @@ coverage.out
 report.xml
 .docker_hub_token
 records/
+web-stream-recorder

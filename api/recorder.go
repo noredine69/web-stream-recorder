@@ -11,14 +11,25 @@ var (
 	METRICS_ADD_ENTRY_END_POINT = "add_entry_endpoint"
 	METRICS_ADD_ENTRY_NB_CALL   = "add_entry_endpoint_nb_call"
 	METRICS_ADD_ENTRY_DESC      = "Metrics for Add Entry endpoint"
+
+	METRICS_GET_ALL_RECORDS_END_POINT = "get_all_records_endpoint"
+	METRICS_GET_ALL_RECORDS_NB_CALL   = "get_all_records_endpoint_nb_call"
+	METRICS_GET_ALL_RECORDS_DESC      = "Metrics for Get All Records endpoint"
 )
 
 func (api *Api) declareRecorderRoutes() {
 	privateRoutes := api.router.Group("/recorder/")
 	{
 		privateRoutes.GET("entry", api.scheduleRecording)
+		privateRoutes.GET("all", api.getAllRecords)
 	}
 	api.addGaugeMetricForEndpoint(METRICS_ADD_ENTRY_END_POINT, METRICS_ADD_ENTRY_NB_CALL, METRICS_ADD_ENTRY_DESC)
+}
+
+func (api *Api) getAllRecords(ginContext *gin.Context) {
+	api.incGaugeMetricForEndpoint(METRICS_GET_ALL_RECORDS_END_POINT, METRICS_GET_ALL_RECORDS_NB_CALL)
+	getAllRecordsResponse := api.recorderApi.GetAllRecords()
+	ginContext.JSON(http.StatusOK, getAllRecordsResponse)
 }
 
 func (api *Api) scheduleRecording(ginContext *gin.Context) {

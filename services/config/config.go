@@ -3,6 +3,7 @@ package config
 type Config struct {
 	Api       ApiConfig
 	Recorder  RecorderConfig
+	Database  DatabaseConfig
 	DebugMode bool
 }
 
@@ -20,4 +21,10 @@ type ProviderConfig struct {
 type ApiConfig struct {
 	Port      int    `json:"port"`
 	SecretKey string `json:"secretKey"`
+}
+
+type DatabaseConfig struct {
+	InMem  bool   `json:"inMem"`
+	DbPath string `json:"dbPath"`
+	DbName string `json:"dbName"`
 }

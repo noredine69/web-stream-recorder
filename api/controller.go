@@ -21,9 +21,9 @@ type Api struct {
 	metricsMonitor *ginmetrics.Monitor
 }
 
-func New(config config.Config) *Api {
+func New(config config.Config, recorderApi recorder.RecorderAPIInterface) *Api {
 	api := Api{config: config}
-	api.recorderApi = recorder.New(config.Recorder)
+	api.recorderApi = recorderApi
 	api.DeclareRoutes()
 	return &api
 }

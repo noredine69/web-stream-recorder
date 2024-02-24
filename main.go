@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	log.Info().Msg("Starting the Ethplorer proxy...")
+	log.Info().Msg("Starting the Web Recorder...")
 
 	configFilePath := flag.String("config", "resources/config/config.json", "path for config file")
 	debugMode := flag.Bool("debug", false, "(optional) start in debug mode")

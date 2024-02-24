@@ -12,7 +12,7 @@ import (
 
 func TestHealth(t *testing.T) {
 	conf := initConfigHelperForHealth()
-	api := New(conf)
+	api := New(conf, nil)
 	ts := httptest.NewServer(api.router)
 	defer ts.Close()
 	body := checkLogsRouteCallStatusOk(t, fmt.Sprintf("%s/healthz", ts.URL), "GET")
